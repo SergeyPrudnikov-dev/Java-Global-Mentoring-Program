@@ -1,0 +1,12 @@
+*.class
+#folders#
+/target
+/neoDb*
+/data
+/src/main/webapp/WEB-INF/classes
+/.idea
+*/META-INF/*
+# Packaged files #
+*.jar
+*.war
+*.ear

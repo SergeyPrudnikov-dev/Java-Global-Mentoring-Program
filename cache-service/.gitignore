@@ -3,8 +3,7 @@ out
 target
 bin
 build
- 
-
+/.idea
 # Intellij project files
 .iws
 .idea
