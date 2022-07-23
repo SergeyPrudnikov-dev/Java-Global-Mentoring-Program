@@ -1,7 +1,8 @@
+package com.prudnikau.guava.data;
+
 /**
- * //TODO: [before commit] class description.
  * <p/>
- * University-commission 2022  epam.com
+ * Guava-cache-service  2022  epam.com
  * <p/>
  * Date: 07/14/2022
  *
@@ -19,9 +20,6 @@ public class Data {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,7 +1,8 @@
+package com.prudnikau.data;
+
 /**
- * //TODO: [before commit] class description.
  * <p/>
- * University-commission 2022  epam.com
+ * Cache-service 2022  epam.com
  * <p/>
  * Date: 07/13/2022
  *
@@ -51,7 +52,7 @@ public class Key {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Key{");
+        final StringBuilder sb = new StringBuilder("com.prudnikau.data.Key{");
         sb.append("key=").append(hashData);
         sb.append(", timelife=").append(timelife);
         sb.append('}');

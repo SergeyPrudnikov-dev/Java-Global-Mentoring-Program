@@ -1,12 +1,16 @@
+package com.prudnikau.cache;
+
+import com.prudnikau.data.Data;
+import com.prudnikau.data.Key;
+
 import java.util.Comparator;
 import java.util.Map;
 import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 /**
- * //TODO: [before commit] class description.
  * <p/>
- * University-commission 2022  epam.com
+ * Cache-service 2022  epam.com
  * <p/>
  * Date: 07/13/2022
  *
@@ -15,16 +19,13 @@ import java.util.logging.Logger;
 public class Cache {
     private static final Logger LOGGER = Logger.getLogger(Cache.class.getName());
 
-    long defaultTimeout = 5000;
-    int maxSize = 100000;
-    int cacheAddCounter = 0;
-    int cacheEvictionCounter = 0;
-    long startWork = System.currentTimeMillis();
-
-    private Comparator keyComparator = Comparator.comparingLong(Key::getTimelife)
-            .thenComparing(Key::getHashData);
+    private final long defaultTimeout = 5000;
+    private final int maxSize = 100000;
+    private int cacheAddCounter = 0;
+    private int cacheEvictionCounter = 0;
+    private final long startWork = System.currentTimeMillis();
+    private Comparator keyComparator = Comparator.comparingLong(Key::getTimelife).thenComparing(Key::getHashData);
     private volatile ConcurrentSkipListMap<Key, Data> map = new ConcurrentSkipListMap(keyComparator);
-
     private ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
         Thread th = new Thread(r);
         th.setDaemon(true);
@@ -67,11 +68,7 @@ public class Cache {
         cacheAddCounter++;
     }
 
-
     public Data get(Key key) {
-//        Data data = map.get(key);
-//        map.remove(key);
-//        put(data);
         return map.get(key);
     }
 
@@ -90,5 +87,13 @@ public class Cache {
         double timeAdd = (System.currentTimeMillis() - startWork)/(double)cacheAddCounter;
         sb.append(timeAdd);
         return sb.toString();
+    }
+
+    public int getCacheAddCounter() {
+        return cacheAddCounter;
+    }
+
+    public int getCacheEvictionCounter() {
+        return cacheEvictionCounter;
     }
 }
