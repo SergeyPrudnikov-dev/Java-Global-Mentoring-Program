@@ -3,7 +3,7 @@ out
 target
 bin
 build
- 
+.gitignore
 
 # Intellij project files
 .iws
